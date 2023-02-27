@@ -37,7 +37,15 @@
                         <th>{{ $jogo->categoria }}</th>
                         <th>{{ $jogo->ano_criacao }}</th>
                         <th>{{ $jogo->valor }}</th>
-                        <th><a href="{{ route('jogos.edit', ['id' => $jogo->id]) }}">Editar</a></th>
+                        <th>
+                            <a href="{{ route('jogos.edit', ['id' => $jogo->id]) }}">Editar</a>
+                            <form action="{{ route('jogos.destroy', ['id' => $jogo->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Deletar</button>
+                            </form>
+                        </th>
+
                     </tr>
                 @endforeach
 
